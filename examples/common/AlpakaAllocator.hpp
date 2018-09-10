@@ -82,9 +82,7 @@ struct Alpaka
             devAcc,
             Size(count)
         );
-#if defined(ALPAKA_ACC_GPU_CUDA_ENABLED) && BOOST_LANG_CUDA
-        alpaka::mem::buf::pin( buffer );
-#endif
+        alpaka::mem::buf::prepareForAsyncCopy( buffer );
         BlobType accessor( buffer );
         return accessor;
     }
